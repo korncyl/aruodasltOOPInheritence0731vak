@@ -179,7 +179,6 @@ namespace aruodasltOOPInheritence0731vak.Models
         public void Photo()
         {
             IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
-            //chooseFile.Click();
             chooseFile.SendKeys("C:\\Users\\Kornelija\\Desktop\\inzinerine_geodezija-274.jpg");
         }
         public void ChoosePurpose()
