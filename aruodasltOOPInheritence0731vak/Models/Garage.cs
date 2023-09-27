@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace aruodasltOOPInheritence0731vak.Models
 {
-    internal class Plot : RealEstate
+    internal class Garage : RealEstate
     {
         public string Area { get; set; }
         public string Municipality { get; set; }
@@ -32,7 +32,7 @@ namespace aruodasltOOPInheritence0731vak.Models
         public int[] CheckBoxes { get; set; }
         public int[] AdditionalFeatures { get; set; }
 
-        public Plot( string municipality, string settlement,string microdistrict,string street,string number, string area, bool checkRules,bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, int[] checkBoxes, int[] additionalFeatures) : base()
+        public Garage( string municipality, string settlement,string microdistrict,string street,string number, string area, bool checkRules,bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, int[] checkBoxes, int[] additionalFeatures) : base()
         {
             Municipality = municipality;
             Settlement = settlement;
@@ -55,8 +55,8 @@ namespace aruodasltOOPInheritence0731vak.Models
 
         public void fill()
         {
-            Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
-            ChooseLocation();
+            Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
+            ChooseLocationKaunas();
             PlotNo();
             Acceptrules();
             TurnOffFunctions();
@@ -81,6 +81,8 @@ namespace aruodasltOOPInheritence0731vak.Models
 
             IList<IWebElement> elements = containerElement.FindElements(By.TagName("li"));
 
+
+
             if (elements.Count > 14)
             {
                 containerElement.FindElement(By.TagName("input")).SendKeys(searchText);
@@ -102,6 +104,56 @@ namespace aruodasltOOPInheritence0731vak.Models
       
         public void ChooseLocation()
         {
+
+            
+            ///Vilnius
+            ///Savivaldybe
+            int municipalitycount = Driver.FindElement(By.Id("regionDropdown")).FindElements(By.TagName("li")).Count;
+            WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
+            int settlementcount = Driver.FindElement(By.Id("districts_461")).FindElements(By.TagName("li")).Count;
+            int microdistrictcount = Driver.FindElement(By.Id("quartals_1")).FindElements(By.TagName("li")).Count;
+            int streetcount = Driver.FindElement(By.Id("streets_1")).FindElements(By.TagName("li")).Count;
+
+            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/input[2]")).Click();
+            Driver.FindElement(By.XPath("//*[@id=\"regionDropdown\"]/li[1]/input")).SendKeys(this.Municipality);
+            wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"regionDropdown\"]/li[" + (municipalitycount + 1) + "]"))).Click();
+            
+            Driver.FindElement(By.Id("districtTitle")).Click();
+
+            Driver.FindElement(By.XPath("//*[@id=\"districts_461\"]/li[1]/input")).SendKeys(this.Settlement);
+            wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"districts_461\"]/li[" + (settlementcount + 1) + "]"))).Click();
+
+            Driver.FindElement(By.XPath("//*[@id=\"quartalField\"]/span[1]/span[2]")).Click();
+            /// su Kaunu mikrorajono laukelis 4,[3] "dropdown-input-search-value".!!!!
+            Driver.FindElements(By.ClassName("dropdown-input-search-value"))[2].SendKeys(this.Microdistrict);
+
+            Console.WriteLine("//*[@id=\"quartals_1\"]/li["+ (microdistrictcount + 1)+ "]");
+            wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"quartals_1\"]/li["+ (microdistrictcount + 1)+ "]"))).Click();
+
+            //Gatve
+            Driver.FindElement(By.XPath("//*[@id=\"streetField\"]/span[1]/span[2]")).Click();
+            Driver.FindElements(By.ClassName("dropdown-input-search-value"))[5].SendKeys(this.Street);
+            wait.Until(ExpectedConditions.ElementExists(By.XPath("//*[@id=\"streets_1\"]/li[" + (streetcount + 1) +"]"))).Click();
+
+
+        }
+        public void ChooseLocationKaunas()
+        {
+
+            //int municipalitycount = Driver.FindElement(By.Id("regionDropdown")).FindElements(By.TagName("li")).Count;
+            //WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
+            //Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span")).Click();
+            //IWebElement containerElement = Driver.FindElements(By.ClassName("dropdown-input-values-address"))[0];
+            //LocationGeneration(containerElement, this.Municipality);
+
+            //Thread.Sleep(1000);
+            //Driver.FindElement(By.XPath("//*[@id=\"district\"]/span")).Click();
+            //IWebElement containerElement1 = Driver.FindElements(By.ClassName("dropdown-input-values-address"))[1];
+            //LocationGeneration(containerElement1,this.Settlement);
+
+            ////t
+
+            //Thread.Sleep(1000);
             int pos = 3;
             LocationGeneration( 0,0, this.Municipality);
             Thread.Sleep(1000);
@@ -115,8 +167,14 @@ namespace aruodasltOOPInheritence0731vak.Models
                 Console.WriteLine("neradom 3cio");
             }
             LocationGeneration( 3,pos, this.Street);
-        }
 
+
+            //Thread.Sleep(1000);
+
+            //Driver.FindElement(By.XPath("//*[@id=\"streetField\"]/span[1]/span[2]")).Click();
+            //IWebElement containerElement3 = Driver.FindElements(By.ClassName("dropdown-input-values-address"))[pos];
+            //LocationGeneration(containerElement3, this.Street);
+        }
         public void PlotNo()
         {
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
