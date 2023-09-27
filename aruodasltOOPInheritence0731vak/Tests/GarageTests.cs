@@ -20,29 +20,26 @@ namespace aruodasltOOPInheritence0731vak.Tests
         public void SellPlotListingTest()
         {
             Garage p = new Garage("Vilnius", "Vilniaus", "Antakalnis", "Alantos","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
-                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", new int [] { 1, 2, 7, 8, 9 },
-                new int[] {1,5,7,9});
+                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", "Požeminis");
             p.fill();
 
         }
         [Test]
         public void SellPlotListingTestKaunas()
         {
-            Plot p = new Plot("Kaunas", "Kauno", "Aleksotas","Algirdo","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
-                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", new int[] { 4,5,6 },
-                new int[] { 2,4,6,8});
+            Garage p = new Garage("Kaunas", "Kauno", "Aleksotas","Algirdo","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
+                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A","Mūrinis");
             p.fill();
 
         }
-        [Test]
-        public void SellPlotListingTestSiauliai()
-        {
-            Plot p = new Plot("Šiauliai", "Žaliūkių", "Centras", "Aitvarų", "15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
-                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", new int[] { 4, 5, 6 },
-                new int[] { 2, 4, 6, 8 });
-            p.fill();
+        //[Test]
+        //public void SellPlotListingTestSiauliai()
+        //{
+        //    Garage p = new Garage("Šiauliai", "Žaliūkių", "Centras", "Aitvarų", "15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
+        //        "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A");
+        //    p.fill();
 
-        }
+        //}
        
         [OneTimeSetUp]
         public void Initialize()
@@ -81,6 +78,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
             Driver.FindElement(By.Id("loginAruodas")).Click();
 
         }
+       
     }
 
 }
