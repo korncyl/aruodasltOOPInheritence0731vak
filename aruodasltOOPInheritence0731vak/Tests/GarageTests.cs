@@ -20,7 +20,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
         public void SellPlotListingTest()
         {
             Garage p = new Garage("Vilnius", "Vilniaus", "Antakalnis", "Alantos","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
-                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", "Požeminis");
+                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", "Požeminis","Kita", 8, new int[] {1,3,5},new int[] { 2,5,6}, false, true);
             p.fill();
 
         }
@@ -28,7 +28,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
         public void SellPlotListingTestKaunas()
         {
             Garage p = new Garage("Kaunas", "Kauno", "Aleksotas","Algirdo","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
-                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A","Mūrinis");
+                "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A","Mūrinis","Požeminėjė aikštelėje", 6, new int[] {2,4,6},new int[] { 1,2,4}, true, false);
             p.fill();
 
         }
@@ -68,6 +68,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
         public void AcceptCookies()
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/");
+            Thread.Sleep(5000);
             Driver.FindElement(By.Id("onetrust-accept-btn-handler")).Click();
         }
         public void Login()

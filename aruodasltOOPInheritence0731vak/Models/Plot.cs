@@ -13,17 +13,11 @@ namespace aruodasltOOPInheritence0731vak.Models
 {
     internal class Plot : RealEstate
     {
-        public string Area { get; set; }
-        public string Municipality { get; set; }
-        public string Settlement { get; set; }
-        public string Microdistrict { get; set; }
-        public string Street { get; set; }
-        public string Number { get; set; }
-
         public bool CheckRules { get; set; }
         public bool ContactByEmail { get; set; }
         public bool ChatTurnOff { get; set; }
         public string Phono { get; set; }
+        public string Area { get; set; }
         public string Price { get; set; }
         public string RCnumber { get; set; }
         public string Description { get; set; }
@@ -32,10 +26,10 @@ namespace aruodasltOOPInheritence0731vak.Models
         public int[] CheckBoxes { get; set; }
         public int[] AdditionalFeatures { get; set; }
 
-        public Plot( string municipality, string settlement,string microdistrict,string street,string number, string area, bool checkRules,bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, int[] checkBoxes, int[] additionalFeatures) : base()
+        public Plot( string municipality, string settlement,string microdistrict,string street,string number, string area, bool checkRules,bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, int[] checkBoxes, int[] additionalFeatures)
+            : base(municipality, settlement, microdistrict, street, number)
         {
-            Municipality = municipality;
-            Settlement = settlement;
+          
             Area = area;
             CheckRules = true;
             ContactByEmail = true;
@@ -45,9 +39,6 @@ namespace aruodasltOOPInheritence0731vak.Models
             RCnumber = rcnumber;
             Description = description;
             Link = link;
-            Microdistrict = microdistrict;
-            Street = street;
-            Number = number;
             CheckBoxes = checkBoxes;
             Ddd = ddd;
             AdditionalFeatures = additionalFeatures;
@@ -56,7 +47,7 @@ namespace aruodasltOOPInheritence0731vak.Models
         public void fill()
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
-            ChooseLocation();
+            base.ChooseLocation();
             PlotNo();
             Acceptrules();
             TurnOffFunctions();
@@ -72,51 +63,7 @@ namespace aruodasltOOPInheritence0731vak.Models
      
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(Area);
         }
-        public void LocationGeneration(int xpath, int pos, string searchText)
-        {
-            string[] Xpaths = { "//*[@id=\"newObjectForm\"]/ul/li[3]/span[1]/span", "//*[@id=\"district\"]/span", "//*[@id=\"quartalField\"]/span[1]/span[2]", "//*[@id=\"streetField\"]/span[1]/span[2]" };
-            Driver.FindElement(By.XPath(Xpaths[xpath])).Click();
-            Console.WriteLine(pos);
-            IWebElement containerElement = Driver.FindElements(By.ClassName("dropdown-input-values-address"))[pos];
-
-            IList<IWebElement> elements = containerElement.FindElements(By.TagName("li"));
-
-            if (elements.Count > 14)
-            {
-                containerElement.FindElement(By.TagName("input")).SendKeys(searchText);
-                Thread.Sleep(1000);
-                containerElement.FindElement(By.TagName("input")).SendKeys(Keys.Enter);
-            }
-            else
-            {
-                for (int i = 0; i < elements.Count; i++)
-                {
-                    if (elements[i].Text.Contains(searchText))
-                    {
-                        elements[i].Click();
-                        break;
-                    }
-                }
-            }
-        }
       
-        public void ChooseLocation()
-        {
-            int pos = 3;
-            LocationGeneration( 0,0, this.Municipality);
-            Thread.Sleep(1000);
-            LocationGeneration( 1,1, this.Settlement);
-            try
-            {
-                LocationGeneration(2, 2, this.Microdistrict);
-                Thread.Sleep(1000);
-            }
-            catch {pos = 2;
-                Console.WriteLine("neradom 3cio");
-            }
-            LocationGeneration( 3,pos, this.Street);
-        }
-
         public void PlotNo()
         {
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
@@ -155,10 +102,6 @@ namespace aruodasltOOPInheritence0731vak.Models
         public void PlotPrice()
         {
             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
-        }
-        public void ChoosePurpose1()
-        {
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[16]/div/div[1]/label/span")).Click();
         }
         public void RC()
         {
