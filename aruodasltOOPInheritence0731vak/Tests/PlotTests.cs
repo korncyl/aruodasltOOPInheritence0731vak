@@ -21,7 +21,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
         {
             Plot p = new Plot("Vilnius", "Vilniaus", "Antakalnis", "Alantos","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
                 "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", new int [] { 1, 2, 7, 8, 9 },
-                new int[] {1,5,7,9});
+                new int[] {1,5,7,9}, "C:\\Users\\Kornelija\\Desktop\\inzinerine_geodezija-274.jpg");
             p.fill();
 
         }
@@ -30,7 +30,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
         {
             Plot p = new Plot("Kaunas", "Kauno", "Aleksotas","Algirdo","15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
                 "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", new int[] { 4,5,6 },
-                new int[] { 2,4,6,8});
+                new int[] { 2,4,6,8}, "C:\\Users\\Kornelija\\Desktop\\inzinerine_geodezija-274.jpg");
             p.fill();
 
         }
@@ -39,7 +39,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
         {
             Plot p = new Plot("Šiauliai", "Žaliūkių", "Centras", "Aitvarų", "15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
                 "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A", new int[] { 4, 5, 6 },
-                new int[] { 2, 4, 6, 8 });
+                new int[] { 2, 4, 6, 8 }, "C:\\Users\\Kornelija\\Desktop\\inzinerine_geodezija-274.jpg");
             p.fill();
 
         }

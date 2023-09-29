@@ -13,17 +13,17 @@ namespace aruodasltOOPInheritence0731vak.Models
 {
     internal class Garage : RealEstate
     {
-        public string Area { get; set; }
+       
       
-        public bool CheckRules { get; set; }
-        public bool ContactByEmail { get; set; }
-        public bool ChatTurnOff { get; set; }
-        public string Phono { get; set; }
-        public string Price { get; set; }
-        public string RCnumber { get; set; }
-        public string Description { get; set; }
-        public string Link { get; set; }
-        public string Ddd { get; set; }
+        
+        
+        
+        
+       
+        
+        
+        
+        public string Photo { get; set; }
         public string ClickType { get; set; }
         public string ClickType2 { get; set; }
         public int FillCar { get; set; }
@@ -33,22 +33,22 @@ namespace aruodasltOOPInheritence0731vak.Models
         public bool AutoPlace { get; set; }
 
 
-        public Garage(string municipality, string settlement, string microdistrict, string street, string number, string area, bool checkRules, bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, string clickType,string clickType2, int fillCar, int[] additionalFeatures,int[] additionalFeatures2, bool garageType, bool autoPlace) 
-            : base( municipality,  settlement,  microdistrict,  street,  number)
+        public Garage(string municipality, string settlement, string microdistrict, string street, string number, string area, bool checkRules, bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, string clickType,string clickType2, int fillCar, int[] additionalFeatures,int[] additionalFeatures2, bool garageType, bool autoPlace, string photo) 
+            : base( municipality,  settlement,  microdistrict,  street,  number, area, rcnumber, checkRules, chatTurnOff, contactByEmail, description, price, phono, ddd, link)
         {
            
-            Area = area;
-            CheckRules = checkRules;
-            ContactByEmail = contactByEmail;
-            ChatTurnOff = chatTurnOff;
-            Phono = phono;
-            Price = price;
-            RCnumber = rcnumber;
-            Description = description;
-            Link = link;
+            
+            
+            
+          
+            
+            
+            
+            
+            
             ClickType = clickType;
             ClickType2 = clickType2;
-            Ddd = ddd;
+            Photo = photo;
             FillCar = fillCar;
             AdditionalFeatures = additionalFeatures;
             AdditionalFeatures2 = additionalFeatures2;
@@ -58,89 +58,61 @@ namespace aruodasltOOPInheritence0731vak.Models
 
         public void fill()
         {
-            Console.WriteLine("fill part");
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
-            Console.WriteLine("open url");
-            ChooseLocation();
-            GarageNo();
-            Acceptrules();
-            TurnOffFunctions();
-            Phonoentry();
-            GaragePrice();
-            RC();
-            GarageDescription();
-            YoutubeLink();
-            DddLInk();
-            Photo();
+            base.fill();
+            //Console.WriteLine("fill part");
+            //Console.WriteLine("open url");
+
+            //ChooseLocation();
+            //IteamNo();
+            //Acceptrules();
+            //TurnOffFunctions();
+            //Phonoentry();
+            //GaragePrice();
+            //RC();
+            //GarageDescription();
+            //YoutubeLink();
+            //DddLInk();
+            UploadPhoto();
             FitsCar();
             ByFunctionality();
+            //IteamArea();
+            
 
-
-            Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(Area);
+            
         }
         
      
-        public void GarageNo()
-        {
-            Driver.FindElement(By.Name("FHouseNum")).SendKeys(Number);
-        }
-        public void Acceptrules()
-        {
-            if (CheckRules)
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[42]/span[1]/div/div/label/span")).Click();
-            }
-        }
-        public void TurnOffFunctions()
-        {
-            TurnOffChat();
-            TurnOffEmail();
-        }
-        public void TurnOffChat()
-        {
+        //public void GarageNo()
+        //{
+        //    Driver.FindElement(By.Name("FHouseNum")).SendKeys(Number);
+        //}
+        
+        //public void TurnOffFunctions()
+        //{
+        //    //TurnOffChat();
+        //    TurnOffEmail();
+        //}
+       
 
-            if (ChatTurnOff)
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[41]/div/div/div/label/span")).Click();
-            }
-        }
-
-        public void TurnOffEmail()
-        {
-            if (ContactByEmail)
-            {
-                Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/div/div/div/label/span")).Click();
-            }
-        }
-        public void Phonoentry()
-        {
-            Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.Phono);
-        }
-        public void GaragePrice()
-        {
-            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
-        }
-        public void RC()
-        {
-            Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RCnumber);
-        }
-        public void GarageDescription()
-        {
-            Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
-        }
-        public void YoutubeLink()
-        {
-            Driver.FindElement(By.Name("Video")).SendKeys(this.Link);
-        }
-        public void DddLInk()
-        {
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Ddd);
-        }
-        public void Photo()
-        {
+        //public void TurnOffEmail()
+        //{
+        //    if (ContactByEmail)
+        //    {
+        //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/div/div/div/label/span")).Click();
+        //    }
+        //}
+      
+        
+        
+       
+       
+       
+        public void UploadPhoto()
+        {                                                        //"//*[@id=\"uploadPhotoBtn\"]/input"
             IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
             //chooseFile.Click();
-            chooseFile.SendKeys("C:\\Users\\Kornelija\\Desktop\\2-leonardas-sip-garazas.jpg");
+            chooseFile.SendKeys(Photo);
         }
         public void Type()
         {

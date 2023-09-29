@@ -3,6 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +20,22 @@ namespace aruodasltOOPInheritence0731vak.Models
         public string Microdistrict { get; set; }
         public string Street { get; set; }
         public string Number { get; set; }
+        public string Area { get; set; }
+        public string RCnumber { get; set; }
+        public bool CheckRules { get; set; }
+        public bool ChatTurnOff { get; set; }
+        public bool ContactByEmail { get; set; }
+        public string Description { get; set; }
+        public string Price { get; set; }
+        public string Phono { get; set; }
+        public string Ddd { get; set; }
+        public string Link { get; set; }
         public RealEstate()
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
         }
-        public RealEstate(string municipality, string settlement, string microdistrict, string street, string number)
+        public RealEstate(string municipality, string settlement, string microdistrict, string street, string number, string area, string rCnumber, bool checkRules, bool chatTurnOff, bool contactByEmail, string description, string price, string phono, string ddd, string link)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
@@ -32,8 +44,31 @@ namespace aruodasltOOPInheritence0731vak.Models
             Microdistrict = microdistrict;
             Street = street;
             Number = number;
+            Area = area;
+            RCnumber = rCnumber;
+            CheckRules = checkRules;
+            ChatTurnOff = chatTurnOff;
+            ContactByEmail = contactByEmail;
+            Description = description;
+            Price = price;
+            Phono = phono;
+            Ddd = ddd;
+            Link = link;
         }
-
+        public void fill()
+        {
+            ChooseLocation();
+            IteamNo();
+            IteamArea();
+            RC();
+            AcceptClikableRules(CheckRules, 3);
+            AcceptClikableRules(ChatTurnOff, 4);
+            AcceptClikableRules(ContactByEmail, 5);
+            IteamDescription();
+            IteamPrice();
+            Phonoentry();
+            DddLInk();
+        }
         public void ChooseLocation()
         {
             Console.WriteLine("location choose");
@@ -84,6 +119,66 @@ namespace aruodasltOOPInheritence0731vak.Models
                 }
             }
         }
+        public void IteamNo()
+        {
+            Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
+        }
+        public void IteamArea()
+        {
+            Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(Area);
+        }
 
+        public void RC()
+        {
+            Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RCnumber);
+        }
+        //public void Acceptrules()
+        //{
+        //    if (CheckRules)
+        //    {
+        //        IList<IWebElement> lis = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
+
+        //        lis[lis.Count - 5].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+        //        lis[lis.Count - 4].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+        //        lis[lis.Count - 3].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+        //    }
+        //}
+        //public void TurnOffChat()
+        //{
+
+        //    if (ChatTurnOff)
+        //    {
+        //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[41]/div/div/div/label/span")).Click();
+        //    }
+        //}
+        public void AcceptClikableRules(bool cb, int no)
+        {
+
+            if (cb)
+            {
+                IList<IWebElement> lis = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
+                lis[lis.Count - no].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
+            }
+        }
+        public void IteamDescription()
+        {
+            Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
+        }
+        public void IteamPrice()
+        {
+            Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
+        }
+        public void Phonoentry()
+        {
+            Driver.FindElement(By.Name("phone")).SendKeys(this.Phono);
+        }
+        public void DddLInk()
+        {
+            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Ddd);
+        }
+        public void YoutubeLink()
+        {
+            Driver.FindElement(By.Name("Video")).SendKeys(this.Link);
+        }
     }
 }
