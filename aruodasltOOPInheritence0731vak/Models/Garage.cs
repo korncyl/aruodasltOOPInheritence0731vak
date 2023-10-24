@@ -81,19 +81,23 @@ namespace aruodasltOOPInheritence0731vak.Models
 
             
         }
-        
-     
+
+        public override void ItemDescription()
+        {
+            Driver.FindElement(By.ClassName("lang-en-label")).Click();
+            Driver.FindElement(By.Name("notes_en")).SendKeys(this.Description);
+        }
         //public void GarageNo()
         //{
         //    Driver.FindElement(By.Name("FHouseNum")).SendKeys(Number);
         //}
-        
+
         //public void TurnOffFunctions()
         //{
         //    //TurnOffChat();
         //    TurnOffEmail();
         //}
-       
+
 
         //public void TurnOffEmail()
         //{
@@ -102,12 +106,12 @@ namespace aruodasltOOPInheritence0731vak.Models
         //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/div/div/div/label/span")).Click();
         //    }
         //}
-      
-        
-        
-       
-       
-       
+
+
+
+
+
+
         public void UploadPhoto()
         {                                                        //"//*[@id=\"uploadPhotoBtn\"]/input"
             IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));

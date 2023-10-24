@@ -13,15 +13,7 @@ namespace aruodasltOOPInheritence0731vak.Models
 {
     internal class Plot : RealEstate
     {
-       
-       
-      
-       
-        
-        
-        
-        
-        
+  
         public string Photo { get; set; }
         public int[] CheckBoxes { get; set; }
         public int[] AdditionalFeatures { get; set; }
@@ -29,12 +21,7 @@ namespace aruodasltOOPInheritence0731vak.Models
         public Plot( string municipality, string settlement,string microdistrict,string street,string number, string area, bool checkRules,bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, int[] checkBoxes, int[] additionalFeatures, string photo)
             : base(municipality, settlement, microdistrict, street, number,area, rcnumber, checkRules, chatTurnOff, contactByEmail, description, price, phono, ddd, link)
         {
-          
-            
-            
-           
-            
-       
+
             Description = description;
             Link = link;
             CheckBoxes = checkBoxes;
@@ -46,70 +33,10 @@ namespace aruodasltOOPInheritence0731vak.Models
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=11&offer_type=1");
             base.fill();
-           // IteamNo();
-            //Acceptrules();
-            //TurnOffFunctions();
-            //Phonoentry();
-            //PlotPrice();
-            ChoosePurpose();
             ChooseAddFeatures();
-           // RC();
-            //PLotDescription();
-            //YoutubeLink();
-            //DddLInk();
             UploadPhoto();
-            //IteamArea();
-     
-            //Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(Area);
         }
 
-
-
-        //public void TurnOffFunctions()
-        //{
-        //    //TurnOffChat();
-        //    //TurnOffEmail();
-        //}
-        //public void TurnOffChat()
-        //{
-
-        //    if (ChatTurnOff)
-        //    {
-        //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[37]/div/div/div/label/span")).Click();
-        //    }
-        //}
-
-        //public void TurnOffEmail()
-        //{
-        //    if (ContactByEmail)
-        //    {
-        //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[36]/div/div/div/label/span")).Click();
-        //    }
-        //}
-        //public void Phonoentry()
-        //{
-        //    Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[38]/span[1]/input")).SendKeys(this.Phono);
-        //}
-        //public void PlotPrice()
-        //{
-        //    Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
-        //}
-        //public void RC()
-        //{
-        //    Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RCnumber);
-        //}
-        //public void PLotDescription()
-        //{
-        //    Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
-        //}
-        //public void YoutubeLink()
-        //{
-        //    Driver.FindElement(By.Name("Video")).SendKeys(this.Link);
-        //}
-        //public void DddLInk()
-        //{
-        //    Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Ddd);
-        //}
         public void UploadPhoto()
         {
             IWebElement chooseFile = Driver.FindElement(By.ClassName("bigObjBtn"));

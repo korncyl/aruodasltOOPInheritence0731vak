@@ -28,14 +28,14 @@ namespace aruodasltOOPInheritence0731vak.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public string Phono { get; set; }
-        public string Ddd { get; set; }
+        public string D3Link { get; set; }
         public string Link { get; set; }
         public RealEstate()
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
         }
-        public RealEstate(string municipality, string settlement, string microdistrict, string street, string number, string area, string rCnumber, bool checkRules, bool chatTurnOff, bool contactByEmail, string description, string price, string phono, string ddd, string link)
+        public RealEstate(string municipality, string settlement, string microdistrict, string street, string number, string area, string rCnumber, bool checkRules, bool chatTurnOff, bool contactByEmail, string description, string price, string phono, string d3Link, string link)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
@@ -52,22 +52,22 @@ namespace aruodasltOOPInheritence0731vak.Models
             Description = description;
             Price = price;
             Phono = phono;
-            Ddd = ddd;
+            D3Link = d3Link;
             Link = link;
         }
         public void fill()
         {
             ChooseLocation();
-            IteamNo();
-            IteamArea();
+            ItemNo();
+            ItemArea();
             RC();
             AcceptClikableRules(CheckRules, 3);
             AcceptClikableRules(ChatTurnOff, 4);
             AcceptClikableRules(ContactByEmail, 5);
-            IteamDescription();
-            IteamPrice();
-            Phonoentry();
-            DddLInk();
+            ItemDescription();
+            ItemPrice();
+            PhoNoEntry();
+            D3Link();
         }
         public void ChooseLocation()
         {
@@ -119,11 +119,11 @@ namespace aruodasltOOPInheritence0731vak.Models
                 }
             }
         }
-        public void IteamNo()
+        public void ItemNo()
         {
             Driver.FindElement(By.Name("FHouseNum")).SendKeys(this.Number);
         }
-        public void IteamArea()
+        public void ItemArea()
         {
             Driver.FindElement(By.Id("fieldFAreaOverAll")).SendKeys(Area);
         }
@@ -160,21 +160,21 @@ namespace aruodasltOOPInheritence0731vak.Models
                 lis[lis.Count - no].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
             }
         }
-        public void IteamDescription()
+        public virtual void ItemDescription()
         {
             Driver.FindElement(By.Name("notes_lt")).SendKeys(this.Description);
         }
-        public void IteamPrice()
+        public void ItemPrice()
         {
             Driver.FindElement(By.Id("priceField")).SendKeys(this.Price);
         }
-        public void Phonoentry()
+        public void PhoNoEntry()
         {
             Driver.FindElement(By.Name("phone")).SendKeys(this.Phono);
         }
-        public void DddLInk()
+        public void D3Link()
         {
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.Ddd);
+            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.D3Link);
         }
         public void YoutubeLink()
         {
