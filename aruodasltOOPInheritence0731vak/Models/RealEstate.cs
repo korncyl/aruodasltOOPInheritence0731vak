@@ -28,14 +28,14 @@ namespace aruodasltOOPInheritence0731vak.Models
         public string Description { get; set; }
         public string Price { get; set; }
         public string Phono { get; set; }
-        public string D3Link { get; set; }
+        public string LinkD3 { get; set; }
         public string Link { get; set; }
         public RealEstate()
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
         }
-        public RealEstate(string municipality, string settlement, string microdistrict, string street, string number, string area, string rCnumber, bool checkRules, bool chatTurnOff, bool contactByEmail, string description, string price, string phono, string d3Link, string link)
+        public RealEstate(string municipality, string settlement, string microdistrict, string street, string number, string area, string rCnumber, bool checkRules, bool chatTurnOff, bool contactByEmail, string description, string price, string phono, string linkD3, string link)
         {
             this.Driver = DriverClass.Driver;
             this.Wait = DriverClass.Wait;
@@ -52,7 +52,7 @@ namespace aruodasltOOPInheritence0731vak.Models
             Description = description;
             Price = price;
             Phono = phono;
-            D3Link = d3Link;
+            LinkD3 = linkD3;
             Link = link;
         }
         public void fill()
@@ -132,25 +132,7 @@ namespace aruodasltOOPInheritence0731vak.Models
         {
             Driver.FindElement(By.Name("RCNumber")).SendKeys(this.RCnumber);
         }
-        //public void Acceptrules()
-        //{
-        //    if (CheckRules)
-        //    {
-        //        IList<IWebElement> lis = Driver.FindElement(By.ClassName("new-object-from")).FindElements(By.TagName("li"));
-
-        //        lis[lis.Count - 5].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
-        //        lis[lis.Count - 4].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
-        //        lis[lis.Count - 3].FindElement(By.ClassName("input-style-checkbox")).FindElement(By.TagName("span")).Click();
-        //    }
-        //}
-        //public void TurnOffChat()
-        //{
-
-        //    if (ChatTurnOff)
-        //    {
-        //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[41]/div/div/div/label/span")).Click();
-        //    }
-        //}
+        
         public void AcceptClikableRules(bool cb, int no)
         {
 
@@ -174,7 +156,7 @@ namespace aruodasltOOPInheritence0731vak.Models
         }
         public void D3Link()
         {
-            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.D3Link);
+            Driver.FindElement(By.Name("tour_3d")).SendKeys(this.LinkD3);
         }
         public void YoutubeLink()
         {

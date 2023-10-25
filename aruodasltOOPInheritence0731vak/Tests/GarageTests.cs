@@ -33,14 +33,7 @@ namespace aruodasltOOPInheritence0731vak.Tests
             p.fill();
 
         }
-        //[Test]
-        //public void SellPlotListingTestSiauliai()
-        //{
-        //    Garage p = new Garage("Šiauliai", "Žaliūkių", "Centras", "Aitvarų", "15", "50", true, true, true, "863664521", "25000", "1991-0008-5014", "Parduodamas gyvenamosios paskirties sklypas 50a., draugiska kaiminyste, esfaltuotas kelias iki sklypo",
-        //        "https://www.youtube.com/watch?v=AN0lSytPFRo", "https://www.youtube.com/watch?v=jfC71hOeV4A");
-        //    p.fill();
-
-        //}
+       
        
         [OneTimeSetUp]
         public void Initialize()

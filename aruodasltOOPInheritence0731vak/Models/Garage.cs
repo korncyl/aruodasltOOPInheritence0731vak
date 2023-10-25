@@ -13,16 +13,7 @@ namespace aruodasltOOPInheritence0731vak.Models
 {
     internal class Garage : RealEstate
     {
-       
-      
-        
-        
-        
-        
-       
-        
-        
-        
+   
         public string Photo { get; set; }
         public string ClickType { get; set; }
         public string ClickType2 { get; set; }
@@ -36,16 +27,7 @@ namespace aruodasltOOPInheritence0731vak.Models
         public Garage(string municipality, string settlement, string microdistrict, string street, string number, string area, bool checkRules, bool contactByEmail, bool chatTurnOff, string phono, string price, string rcnumber, string description, string link, string ddd, string clickType,string clickType2, int fillCar, int[] additionalFeatures,int[] additionalFeatures2, bool garageType, bool autoPlace, string photo) 
             : base( municipality,  settlement,  microdistrict,  street,  number, area, rcnumber, checkRules, chatTurnOff, contactByEmail, description, price, phono, ddd, link)
         {
-           
-            
-            
-            
-          
-            
-            
-            
-            
-            
+     
             ClickType = clickType;
             ClickType2 = clickType2;
             Photo = photo;
@@ -60,26 +42,10 @@ namespace aruodasltOOPInheritence0731vak.Models
         {
             Driver.Navigate().GoToUrl("https://www.aruodas.lt/ideti-skelbima/?obj=13&offer_type=1");
             base.fill();
-            //Console.WriteLine("fill part");
-            //Console.WriteLine("open url");
-
-            //ChooseLocation();
-            //IteamNo();
-            //Acceptrules();
-            //TurnOffFunctions();
-            //Phonoentry();
-            //GaragePrice();
-            //RC();
-            //GarageDescription();
-            //YoutubeLink();
-            //DddLInk();
             UploadPhoto();
             FitsCar();
             ByFunctionality();
-            //IteamArea();
-            
-
-            
+     
         }
 
         public override void ItemDescription()
@@ -87,31 +53,7 @@ namespace aruodasltOOPInheritence0731vak.Models
             Driver.FindElement(By.ClassName("lang-en-label")).Click();
             Driver.FindElement(By.Name("notes_en")).SendKeys(this.Description);
         }
-        //public void GarageNo()
-        //{
-        //    Driver.FindElement(By.Name("FHouseNum")).SendKeys(Number);
-        //}
-
-        //public void TurnOffFunctions()
-        //{
-        //    //TurnOffChat();
-        //    TurnOffEmail();
-        //}
-
-
-        //public void TurnOffEmail()
-        //{
-        //    if (ContactByEmail)
-        //    {
-        //        Driver.FindElement(By.XPath("//*[@id=\"newObjectForm\"]/ul/li[40]/div/div/div/label/span")).Click();
-        //    }
-        //}
-
-
-
-
-
-
+       
         public void UploadPhoto()
         {                                                        //"//*[@id=\"uploadPhotoBtn\"]/input"
             IWebElement chooseFile = Driver.FindElement(By.XPath("//*[@id=\"uploadPhotoBtn\"]/input"));
